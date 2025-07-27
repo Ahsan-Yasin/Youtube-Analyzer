@@ -63,7 +63,7 @@ def getSentiments():
         print(f"{(total_positive/total)*100:.1f} % Positive ||  {(total_negative/total)*100:.1f} % Negative  ")    
     return total,total_positive ,total_negative
 def inference(query:str ):   
-    db=loadDatabase()  
+    db=loadDatabase()   
     completion = client.chat.completions.create(
         model="moonshotai/kimi-k2-instruct",
         messages=[ 
@@ -92,10 +92,41 @@ def inference(query:str ):
     answer=""
     for chunk in completion:
         answer+=chunk.choices[0].delta.content or ""
-    print(answer)
-    # results = db.query(query_texts=[query], n_results=5)
-    # retrieved_documents = results["documents"][0]
+    #print(answer)  
+    stackQuery=answer+query
+    result=db.query(query_texts=stackQuery   ,n_results=5 )  
+    relevantData=result['documents'][0] 
+    #print(relevantData) 
+    completion = client.chat.completions.create(
+        model="moonshotai/kimi-k2-instruct",
+        messages=[ 
+        { 
+            "role":"system" ,  
+            "content":(
+                "You are a helpful assistant that analyzes viewer feedback from YouTube comments. "
+                f"Always use only this  context : {relevantData}  to answer the question asked ."
+                " Summarize your answer in 3–5 clear, short lines. Do not make assumptions beyond the given data if you cant find the answer say i dont know ."
+                "Talk like an analyst but in a light easy tone  " 
+                "Each line should be similar in length and use '\\n' to break lines for a rectangular shape."
+                )
+        }, 
+        {  
+                "role":"user", 
+                "content":query 
+        }
+        ],
+        temperature=0.6,
+        max_completion_tokens=4096,
+        top_p=1,
+        stream=True,
+     
+        )
+    Finalanswer=""
+    for chunk in completion:
+        Finalanswer+=chunk.choices[0].delta.content or ""
 
+    return Finalanswer
 #getSentiments()
-
-inference("Why are the comments so negative huh")
+ 
+answer= inference("What are the postive comments saying and whats the main concern of negative") 
+print('\n\n\n',answer)
