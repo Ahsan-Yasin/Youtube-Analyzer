@@ -1,0 +1,6 @@
+Files to create:  
+
+    - loadComents.py  
+    - convert into vector embedding   
+    - save into database  
+    - Model result and inference  
