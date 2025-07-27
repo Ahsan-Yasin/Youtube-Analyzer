@@ -38,6 +38,6 @@ def get_comments (url)->list:
         if not next_page_token:
             break
 
-  
+#   print("Comments lenth : ",len(comments))
     return comments 
 
