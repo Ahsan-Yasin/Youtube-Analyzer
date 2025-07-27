@@ -1,10 +1,14 @@
 #This file loads comments from  youtube vedio  
 from googleapiclient.discovery import build
 import re
- # -------- Config --------
-API_KEY = 'AIzaSyCeBb-ZmKX78B63ob7g4wt3h69b_1oVijE' 
+from dotenv import load_dotenv
+import os 
 
-def get_video_id(url):
+load_dotenv()   
+ # -------- Config --------
+api= os.getenv("YOUTUBE_API_KEY") #add your own youtube api key you can get the api key  at google cloud after making a project 
+
+def get_video_id(url): 
     match = re.search(r"v=([a-zA-Z0-9_-]{11})", url)
     return match.group(1) if match else None
 
@@ -15,7 +19,7 @@ def get_comments (url)->list:
     video_id = get_video_id(VIDEO_URL)
 
    
-    youtube = build('youtube', 'v3', developerKey=API_KEY)
+    youtube = build('youtube', 'v3', developerKey=api)
 
     comments = []
     next_page_token = None
