@@ -46,11 +46,13 @@ body {
 }
 #negativeC
 { 
-  border: 4px solid #FF0000;
+  border: 4px solid #FF0000; 
+  margin-left: 25%;
 }
 #positiveC
 {
   border: 4px solid green;
+  margin-right: 25%;
 }
 .percent {
   font-size: 24px;
