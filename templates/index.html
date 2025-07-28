@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YouTube Comment Analyzer</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
- 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
   <div class="container">
-    <h1 class="main-title">YouTube Comments Analyzer</h1>
+   
 
+    <h1 class="main-title"> <i class="fab fa-youtube" style="font-size: 40px; color: red;"></i>  YouTube Comments Analyzer</h1>
+    
     <div class="circle-section">
-      <div class="circle-wrapper">
+      <div class="circle-wrapper" >
          
-        <div class="circle"><div class="percent">{{ positive }} % </div></div>
+        <div class="circle" id="positiveC"><div class="percent">{{ positive }} % </div></div>
         <div class="label">Positive Comments</div>
        
       </div>
-      <div class="circle-wrapper">
-        <div class="circle"><div class="percent">{{ negative }} % </div></div>
+      <div class="circle-wrapper" >
+        <div class="circle" id="negativeC"><div class="percent">{{ negative }} % </div></div>
         <div class="label">Negative Comments</div>
       </div>
    
@@ -27,7 +31,7 @@
 
     <div class="input-group">
       <form action="/" method="POST" class="input-form">
-        <input type="text" name="userInput" placeholder="Paste YouTube video link…" />
+        <input type="text" name="userInput"  id="inputFrom" placeholder="Paste YouTube video link…" />
         <button>Analyze</button>
       </form>
     </div>

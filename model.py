@@ -75,7 +75,7 @@ def inference(query:str ):
                     "You are an LLM that helps improve search queries for a YouTube comment database stored in ChromaDB.\n"
                     f"The original query is: \"{query}\"\n"
                     "Your task is to generate 3–4 expanded or related queries to retrieve maximum relevant results from the comment database.\n"
-                    "Keep the output minimal and clean, like:\n"
+                    "Keep the output minimal and clean but  long enought to get alot of data out of the database try to give long answers and use suh keywords that we can get maximum data, like:\n"
                     "1. ...\n"
                     "2. ...\n"
                     "3. ...\n"
@@ -108,7 +108,7 @@ def inference(query:str ):
                 "You are a helpful assistant that analyzes viewer feedback from YouTube comments. "
                 f"Always use only this  context : {relevantData}  to answer the question asked ."
                 " Summarize your answer in 3–5 clear, short lines. Do not make assumptions beyond the given data if you cant find the answer say i dont know ."
-                "Talk like an analyst but in a light easy tone  " 
+                "Talk like an analyst but in a light easy tone be dead honest " 
                 "Each line should be similar in length and use '\\n' to break lines for a rectangular shape."
                 )
         }, 
