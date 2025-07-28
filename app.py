@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session
 from model import UseUrl, getSentiments, inference
-
+import os 
 app = Flask(__name__)
 app.secret_key = '1122'  
  
