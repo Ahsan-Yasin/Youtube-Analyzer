@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>YouTube Comment Analyzer</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
+ 
 </head>
 <body>
   <div class="container">
@@ -14,12 +14,12 @@
     <div class="circle-section">
       <div class="circle-wrapper">
          
-        <div class="circle"><div class="percent">{ { positive } }</div></div>
+        <div class="circle"><div class="percent">{{ positive }} % </div></div>
         <div class="label">Positive Comments</div>
        
       </div>
       <div class="circle-wrapper">
-        <div class="circle"><div class="percent">{{ negative }}</div></div>
+        <div class="circle"><div class="percent">{{ negative }} % </div></div>
         <div class="label">Negative Comments</div>
       </div>
    
@@ -43,5 +43,15 @@
       </div>
     </div>
   </div>
-</body>
+</body> 
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelector('.input-form').addEventListener('submit', function () {
+      setTimeout(() => {
+        this.reset();
+      }, 3250);
+    });
+  });
+</script>
 </html>
+ 
