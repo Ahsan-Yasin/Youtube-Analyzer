@@ -56,12 +56,14 @@ def getSentiments():
             elif label == "negative":
                 total_negative += int(count) 
         total=total_positive+total_negative  
+        positivePercentage = round((total_positive / total) * 100, 1)
+        negativePercentage=round((total_negative / total) * 100, 1)
     if total:  
         print(f"\nTOTAL : {total}")
         print(f"POSTIVE : {total_positive}")    
         print(f"NEGATIVE : {total_negative }") 
-        print(f"{(total_positive/total)*100:.1f} % Positive ||  {(total_negative/total)*100:.1f} % Negative  ")    
-    return total,total_positive ,total_negative
+        print(f"{positivePercentage} % Positive ||  {(negativePercentage)} % Negative  ")    
+    return total,positivePercentage ,negativePercentage
 def inference(query:str ):   
     db=loadDatabase()   
     completion = client.chat.completions.create(
@@ -126,7 +128,7 @@ def inference(query:str ):
         Finalanswer+=chunk.choices[0].delta.content or ""
 
     return Finalanswer
-#getSentiments()
+getSentiments()
  
-answer= inference("What are the postive comments saying and whats the main concern of negative") 
-print('\n\n\n',answer)
+#answer= inference("What was the most negative comment") 
+#print('\n\n\n',answer) 

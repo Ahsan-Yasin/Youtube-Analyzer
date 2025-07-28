@@ -4,3 +4,4 @@ Files to create:
     - convert into vector embedding   
     - save into database  
     - Model result and inference  
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
