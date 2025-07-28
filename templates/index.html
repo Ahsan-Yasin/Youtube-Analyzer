@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Comment Analyzer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="main-title">YouTube Comments Analyzer</h1>
+
+    <div class="circle-section">
+      <div class="circle-wrapper">
+        <div class="circle"><div class="percent">22%</div></div>
+        <div class="label">Negative Comments</div>
+      </div>
+      <div class="circle-wrapper">
+        <div class="circle"><div class="percent">78%</div></div>
+        <div class="label">Positive Comments</div>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <input type="url" id="videoInput" placeholder="Paste YouTube video link…" />
+      <button onclick="analyze()">Analyze</button>
+    </div>
+
+    <div class="result-box-wrapper">
+      <div class="result-box" id="resultBox">
+        <div class="placeholder" id="placeholder">
+          <div class="result-icon">🔗</div>
+          <div class="result-text">
+            Your link analysis will appear here…<br />
+            <span>Enter a URL above and click Analyze to get started</span>
+          </div>
+        </div>
+
+        <div class="prompt-area" id="promptArea" style="display: none;">
+          <input
+            type="text"
+            id="userPrompt"
+            placeholder="Ask something about this video..."
+          />
+          <button onclick="askLLM()">Submit</button>
+        </div>
+
+        <div class="llm-response" id="llmResponse"></div>
+      </div>
+    </div>
+
+    <script>
+      function analyze() {
+        const videoInput = document.getElementById("videoInput").value.trim();
+        if (!videoInput) return;
+
+        document.getElementById("placeholder").style.display = "none";
+        document.getElementById("promptArea").style.display = "flex";
+        document.getElementById("llmResponse").innerHTML = "";
+      }
+
+      function askLLM() {
+        const prompt = document.getElementById("userPrompt").value.trim();
+        if (!prompt) return;
+
+        const llmResponse = document.getElementById("llmResponse");
+        llmResponse.innerHTML = "⏳ Generating answer...";
+
+        setTimeout(() => {
+          llmResponse.innerHTML = `
+            <div class="answer">
+              <strong>Answer:</strong> Viewers appreciated the editing style and pacing. The video held attention well, but a few mentioned the audio volume was inconsistent.
+            </div>
+          `;
+        }, 1500);
+      }
+    </script>
+  </div>
+</body>
+</html>
