@@ -10,7 +10,7 @@ load_dotenv()
 api= os.getenv("GROQ_API_KEY") #add your own groq api key by going to groq website
 client = Groq(api_key=api)
 def makedb(url):  
-    UseUrl('https://www.youtube.com/watch?v=i-Cy3SDxLzM&ab_channel=MadHat' ) 
+    UseUrl(url ) 
 
 def getSentiments():
     
@@ -128,7 +128,7 @@ def inference(query:str ):
         Finalanswer+=chunk.choices[0].delta.content or ""
 
     return Finalanswer
-getSentiments()
+#getSentiments()
  
 #answer= inference("What was the most negative comment") 
 #print('\n\n\n',answer) 

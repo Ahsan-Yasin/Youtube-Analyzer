@@ -63,7 +63,7 @@ body {
   margin-bottom: 20px;
 }
 
-input[type="url"] {
+input[type="text"] {
   padding: 14px 18px;
   width: 60%;
   border-radius: 8px;
@@ -73,9 +73,39 @@ input[type="url"] {
   transition: border 0.3s;
 }
 
-input[type="url"]:focus {
-  border-color: #6d28d9;
+input[type="text"]:focus {
+  border-color: #d02629;
 }
+.input-form {
+  display: flex;
+  width: 78%;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.input-form input[type="text"] {
+  flex: 1;
+  min-width: 250px;
+  padding: 14px 18px;
+  border-radius: 8px;
+  border: 1.5px solid #ccc;
+  font-size: 15px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+.input-form button {
+  padding: 14px 20px;
+  background-color: #5f3dc4;
+  color: white;
+  font-size: 15px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
 
 button {
   padding: 14px 20px;
