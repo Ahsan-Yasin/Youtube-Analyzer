@@ -109,7 +109,7 @@ def inference(query:str ):
                 f"Always use only this  context : {relevantData}  to answer the question asked ."
                 " Summarize your answer in 3–5 clear, short lines. Do not make assumptions beyond the given data if you cant find the answer say i dont know ."
                 "Talk like an analyst but in a light easy tone be dead honest " 
-                "Each line should be similar in length and use '\\n' to break lines for a rectangular shape."
+                "Each line should be similar in length and  "
                 )
         }, 
         {  
